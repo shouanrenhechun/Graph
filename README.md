@@ -1,63 +1,27 @@
 # 图论研究 | Graph Theory Research
 
-本仓库收录图论手稿、显式反例和计算复核材料。[首个发布版本 `v0.1.0`](https://github.com/shouanrenhechun/Graph/releases/tag/v0.1.0) 聚焦两个问题。第一，在最大度受限的图中，要求支配集诱导森林或二部图，最坏情况下要选多大比例的顶点？第二，零强制二分配置的计数上界 `8^(n/2)` 是否对所有图成立？
+本仓库的主要研究是**结构支配的极值、等号图与稳定性**。基础两稿先求出最大度受限时的精确支配比例，再将森林支配和二部支配纳入统一的退化支配框架。方向 A 研究哪些图达到或接近这个极值。方向 B 和 C 在同一问题上进一步限制原图，分别考察最小度、退化度、树宽或禁团条件如何改变精确常数与等号图。
 
-The first release determines sharp worst-case ratios for induced forest and bipartite domination under a maximum-degree bound, extends the result to induced degeneracy and related graph properties, and gives a 396-vertex tree counterexample to a zero-forcing configuration counting conjecture. It includes manuscripts, scripts, and machine-readable records. The three research manuscripts listed below expand the results on equality, stability, and restricted graph classes. A companion Lean repository covers the case of maximum degree at most six.
+The structural domination program starts with exact maximum-degree bounds and continues in three directions: equality and stability (A), minimum degree at least two (B), and additional restrictions on the host graph (C). The repository also includes a separate zero-forcing counting counterexample and a companion Lean formalization.
 
-## 阅读入口
+## 研究路线与阅读入口
 
-| 成果 | 建议从这里开始 | 复核材料 |
+| 阶段 | 承接的问题 | 手稿 |
 | --- | --- | --- |
-| 诱导森林支配与二部支配的精确常数 | [PDF](output/pdf/forest_bipartite_domination_theorem.pdf) · [Markdown](output/pdf/forest_bipartite_domination_theorem.md) | [二部支配记录](repro/domination/general_cn_results.json) · [森林支配记录](repro/domination/acyclic_results.json) |
-| 结构支配转移原理、退化层级与性质夹逼 | [PDF](output/pdf/domination_transfer_hierarchy.pdf) · [含附录的扩展手稿](output/pdf/domination_transfer_hierarchy.md) | [一般转移与公式记录](repro/domination/output/pdf/domination_chain_checks.json) · [等号条件复核记录](repro/domination/equality/domination_equality_checks.json) |
-| 零强制二分配置计数的 396 点树反例 | [PDF](output/pdf/zero-forcing-396-vertex-counterexample.pdf) · [直接计数证明](repro/zero-forcing/counterexample_proof.md) | [边表和整数证书](repro/zero-forcing/counterexample_certificate.json) · [核验说明](repro/zero-forcing/README.md) |
+| 基础Ⅰ · 森林与二部支配 | 最大度受限时，两类支配集的最坏比例各是多少？ | [精确常数与整数通项（PDF）](output/pdf/forest_bipartite_domination_theorem.pdf) |
+| 基础Ⅱ · 结构支配转移 | 如何用同一方法处理独立支配、森林支配和一般退化支配？ | [转移原理、退化层级与性质夹逼（PDF）](output/pdf/domination_transfer_hierarchy.pdf) |
+| A · 等号与稳定性 | 固定基础Ⅱ的图类和常数，刻画取等图并估计接近等号时的删点距离。 | [方向 A 研究稿（PDF）](output/pdf/direction_A_equality_stability_proof.pdf) |
+| B · 最小度至少二 | 加入最小度条件后，原有叶冠锐例被排除，半数范围和等号图如何变化？ | [方向 B 研究稿（PDF）](output/pdf/direction_B_min_degree_two_proof.pdf) |
+| C · 退化度、树宽与禁团 | 保留最大度约束，再限制原图的结构，哪些比例可以进一步精确求出？ | [方向 C 研究稿（PDF）](output/pdf/direction_C_research_paper.pdf) |
 
-## 方向 A、B、C 研究稿
+## 共同基础 · 精确常数与加权核心
 
-| 方向 | 研究稿 | 主要内容 |
-| --- | --- | --- |
-| A · 等号与稳定性 | [退化支配的精确常数、完整等号图与定量稳定性（PDF）](output/pdf/direction_A_equality_stability_proof.pdf) | 对无孤立顶点、最大度受限的有限简单图，给出全参数精确常数、最优整数参数、半数范围及严格高于半数范围的等号图分类，并以顶点删除距离刻画稳定性。 |
-| B · 最小度至少二 | [最小度二的半数定理、等号图、稳定性与五分之二部分结果（PDF）](output/pdf/direction_B_min_degree_two_proof.pdf) | 在 k ≥ 1、最小度至少 2、最大度至多 2k + 4 时，给出半数精确常数和等号图分类。等号图恰为若干四圈的不交并。文中还给出稳定性估计与五分之二的部分结果。 |
-| C · 宿主图的退化度、树宽与禁团条件 | [受退化度和最大度约束图的退化支配（PDF）](output/pdf/direction_C_research_paper.pdf) | 给出宿主退化度与最大度约束下的半数阈值、树宽子类的精确公式，以及最大度至多 7 的禁 K₆ 图的森林支配精确比例 11/20、等号图和线性稳定性。 |
+设原图非空、有限、简单且无孤立顶点。支配集覆盖所有未入选顶点。用 Δ 表示原图最大度的上界，用 k 表示支配集所诱导子图的退化度上界。对每张图先最小化支配集大小，再对整个图类取相对大小的最坏值，得到极值常数。k = 0 对应独立支配，k = 1 对应森林支配。基础Ⅰ证明森林与二部支配的极值常数相同，基础Ⅱ给出对所有 k 的精确公式和性质夹逼。在原图只受最大度限制时，精确常数为 1/2 当且仅当 Δ ≤ 2k + 3。
 
-B 稿中的一般五分之二命题仍开放。C 稿给出最大度至多 8 时四退化图类和禁 K₆ 图类的共同下界 14/25 与共同上界 2281/4000。两个图类的精确比例是否都为 14/25 仍开放。最大度至多 8 且树宽至多 4 的子类已取得精确值 14/25。
+共同的证明方法从**最大匹配与唯一归属**出发。给每个核心顶点分配相邻的外部顶点，再以分配数量减一作为权重。加权选择在核心中保留所需的诱导结构，随后用极大独立集补全未支配的外部顶点。已选核心与补全集合之间无边，因而补全保持诱导结构。反过来，完全图叶冠以专属叶子给出紧下界。这套归属、加权选择与叶冠构造，提供了 A 追踪取等以及 C 重新约束加权核心的起点。
 
-## 1. 最大度下的森林支配与二部支配
-
-设 $G$ 是非空、无孤立顶点的有限简单图。若每个 $D$ 外的顶点都在 $D$ 中有邻点，则 $D$ 是支配集。要求诱导子图 $G[D]$ 为森林或二部图，分别得到森林支配数 $\gamma_{\mathrm{acyclic}}(G)$ 和二部支配数 $\gamma_{\mathrm{bip}}(G)$。两者都是满足相应条件的支配集的最小大小。
-
-对固定的整数 $\Delta\ge 1$，在所有最大度至多 $\Delta$ 的上述图上取支配数与顶点数之比的上确界，得到对应的极值常数。两种约束共享同一常数。对 $\Delta\ge 4$，精确值如下，其中 $a$ 取整数。
-
-```math
-C_\Delta=
-\max_{1\le a\le\Delta-2}
-\frac{2+a(\Delta-a-1)}{(\Delta-a+1)(a+1)}.
-```
-
-当 $\Delta=1,2,3$ 时，常数为 $1/2$。上式中的一个最优整数参数可以直接取为
-
-```math
-a_\Delta=\left\lceil
-\frac{\sqrt{8\Delta(\Delta-2)+1}-2\Delta+1}{2}
-\right\rceil.
-```
-
-这里 cor(Kₘ, a) 表示给完全图 $K_m$ 的每个顶点各接上 $a$ 个专属叶子。取 $m=\Delta-a+1$ 和任一个最优 $a$，叶冠图同时达到两种支配约束的极值。限制图连通，或要求最大度恰为 $\Delta$，常数仍相同。
-
-| 最大度上界 $\Delta$ | 最优 $a$ | 精确常数 | 一个等号图 |
-| ---: | ---: | ---: | --- |
-| 4 | 1 | $1/2$ | cor(K₄, 1) |
-| 5 | 1 或 2 | $1/2$ | cor(K₅, 1) |
-| 6 | 2 | $8/15$ | cor(K₅, 2) |
-| 8 | 3 | $7/12$ | cor(K₆, 3) |
-| 10 | 4 | $22/35$ | cor(K₇, 4) |
-| 12 | 4 或 5 | $2/3$ | cor(K₉, 4) |
-
-极值相等仍允许单张图上的参数不同。例如，给四圈的每个顶点各接两个专属叶子得到的图，二部支配数为 4，森林支配数为 5。若原图有 $h$ 个孤立顶点，任何支配集都须选这 $h$ 个点，上界相应为 $h+C_\Delta(\lvert V(G)\rvert-h)$。这些例子及低度数情形见[手稿第 6 至 7 节](output/pdf/forest_bipartite_domination_theorem.md)。
-
-## 2. 退化层级与性质夹逼
-
-若一张图的每个非空诱导子图都有一个度数至多 $k$ 的顶点，则称它为 $k$ 退化。要求支配集诱导 $k$ 退化图时，在同一最大度图类上的精确极值常数为
+<details>
+<summary>展开基础公式和叶冠例子</summary>
 
 ```math
 C_{\Delta,k}=
@@ -67,28 +31,43 @@ C_{\Delta,k}=
 \right).
 ```
 
-内层只取整数 $a$。范围为空时只保留 $1/2$。常数恰为 $1/2$ 当且仅当 $\Delta\le 2k+3$。同一常数也适用于包含所有 $k$ 退化图、且其成员都不含 $K_{k+2}$ 的图性质，例如 $(k+1)$ 可着色。取 $k=0$ 得到独立支配的情形，取 $k=1$ 得到森林、二部和无三角形三种支配约束的共同极值。
+内层只取整数 a。范围为空时只保留 1/2。对 k = 1，取 1 至 Δ − 2 中任一个最优 a，并给完全图的 Δ − a + 1 个顶点各挂 a 个专属叶子，即得相应叶冠等号图。比如 Δ = 6 时取 a = 2，叶冠有 15 个顶点，两种最小支配集均有 8 个顶点。精确的取整公式、小度数和孤立顶点修正见[森林与二部支配手稿](output/pdf/forest_bipartite_domination_theorem.md)。一般 k 的整数优化、渐近式和性质夹逼见[转移原理扩展手稿](output/pdf/domination_transfer_hierarchy.md)。
 
-证明的上界和下界有四个主要步骤。
+</details>
 
-1. 由最大匹配构造支配核心 $C$，将每个核心外顶点唯一分配给某个相邻的核心顶点，每个核心顶点至少获得一个分配点。
-2. 将获得 $a_v$ 个分配点的核心顶点 $v$ 赋权 $a_v-1$。随机排列核心顶点，选取至多有 $k$ 个邻点排在自身之前的顶点，得到加权的诱导 $k$ 退化选择下界。
-3. 将所选顶点扩充为支配核心的集合，再在尚未覆盖的外部顶点中取极大独立集。核心与补全集合之间无边，因此可用同一套局部预算控制支配集大小。
-4. 用完全图叶冠给出紧的下界。若每个核心有 $a$ 个叶子，任取一个未入选的核心，它的所有专属叶子都必须入选。这将下界化为有限的整数优化。
+## 方向 A · 从一个等号例到完整分类
 
-[扩展手稿](output/pdf/domination_transfer_hierarchy.md)还给出最优整数参数、固定 $k$ 的渐近式以及等号和稳定性附录。[半数范围研究稿](output/pdf/domination_half_range.md)单独整理 $\Delta\le 2k+3$ 的等号图和定量稳定性。
+基础两稿用叶冠证明上界可达。A 保持相同的图类与极值常数，逐步追问加权选择、补全和局部预算何时同时取等。严格高于半数时，稿件刻画达到极值的叶冠结构。半数范围有自己的等号分类，临界点需要单独分析。
 
-## 3. 零强制配置计数的 396 点树反例
+A 还把**极值亏损**与**顶点删除距离**联系起来。前者是极值上界允许的支配集大小与图的实际最小支配集大小之差。后者是删到相应等号图族所需的最少顶点数。稳定性定理用亏损定量控制删点数，把“达到上界的图是什么”延伸到“接近上界的图离等号结构有多远”。 [方向 A PDF](output/pdf/direction_A_equality_stability_proof.pdf) · [半数范围专题稿](output/pdf/domination_half_range.md)
 
-设 $\tau(G)$ 为手稿定义的零强制二分配置数。一个配置记录独立集 $J$、边界选择 $S$ 和闭邻域之外的选择 $T$，还记录由 $J\cup S$ 诱导的子图的一组正常二着色。其中 $V(G)\setminus J$ 必须是零强制集。
+## 方向 B · 最小度条件将半数范围延长一级
 
-反例由一个根、与根相邻的 5 个分支中心，以及接在每个中心上的 26 条互不相交的三边臂构成。它有 $1+5(1+3\cdot26)=396$ 个顶点、395 条边，最大度为 27。手稿直接构造一个合法配置子族，证明其大小已经超过 $8^{198}$，所以 $\tau(G)\le 8^{\lvert V(G)\rvert/2}$ 在树上即告失败。
+B 继续研究同一个退化支配比，但将原图最小度提高到至少 2。这样会排除含专属叶子的基础锐例，需要在新图类中重做上界和等号分析。B 使用普通最小支配集提供新的核心，仍对归属顶点作预算估计。森林支配的证明也调用 A 所整理的无孤立、最大度至多 5 图的半数界，处理部分外围结构。
 
-可从[边表与整数证书](repro/zero-forcing/counterexample_certificate.json)重建此树。核验程序还在三个不同的根上复算树动态规划。直接计数和整数不等式见[反例证明](repro/zero-forcing/counterexample_proof.md)。
+对于 k ≥ 1，一般图类的半数阈值是 Δ ≤ 2k + 3。加入最小度条件后，B 将半数精确常数的范围延伸至 Δ ≤ 2k + 4。在证明覆盖的范围内，等号图恰为若干四圈的不交并，并有相应的顶点删除稳定性。例如 k = 1、Δ = 6 时，允许叶子的基础图类给出森林支配常数 8/15，最小度至少 2 的 B 图类给出 1/2。五分之二的部分结果另有明确适用范围，一般五分之二命题仍开放。 [方向 B PDF](output/pdf/direction_B_min_degree_two_proof.pdf)
+
+## 方向 C · 限制原图结构后的精确值与开放区间
+
+C 继续使用同一支配参数，保留最大度上界 Δ，再加入**原图**的退化度、树宽或禁团条件。原图的退化度界记为 q，支配集诱导子图的退化度界仍记为 k。稿件允许核心的不同顶点附着不同数量的叶子，使适用的加权核心能由实际叶冠图反向实现。在这一归约上，C 求出宿主退化度与最大度条件下的半数阈值，以及树宽受限子类的精确公式。
+
+几个具体范围可以直接和基础结果对照。
+
+| 森林支配的原图范围 | 从基础结果到 C 的推进 |
+| --- | --- |
+| 最大度至多 7，再要求禁 K₆ | 共同基础给出仅限最大度时的精确比例 5/9。加入禁团条件后，C 求出精确比例 11/20，刻画五团叶冠的不交并等号图，并证明线性删点稳定性。 |
+| 最大度至多 8，树宽至多 4 | C 求出精确比例 14/25，五团叶冠给出等号。 |
+| 最大度至多 8，分别要求四退化或禁 K₆ | C 对两个图类都给出下界 14/25 和上界 2281/4000，并证明一些达到目标上界的充分条件以及对最小反例的结构归约。两个图类的精确常数是否为 14/25 仍开放。 |
+
+[方向 C PDF](output/pdf/direction_C_research_paper.pdf)
+
+## 独立研究 · 零强制配置计数
+
+396 点树反例属于零强制计数问题。构造从一个根连出 5 个分支中心，并在每个中心接 26 条三边臂。直接计数得到的合法配置子族已超过 8 的 198 次方，否定手稿所述的配置计数上界。证书含边表和整数不等式，程序还从三个不同的根复算树动态规划。 [反例 PDF](output/pdf/zero-forcing-396-vertex-counterexample.pdf) · [直接计数证明](repro/zero-forcing/counterexample_proof.md) · [边表与整数证书](repro/zero-forcing/counterexample_certificate.json)
 
 ## 运行计算复核
 
-Python 脚本使用 Python 3.10 或更新版本及标准库。等号结构的 JavaScript 复核另需 Node.js。以下命令检出固定的发布版本，再从仓库根目录运行相应脚本。
+以下命令复核 [`v0.1.0` 首版](https://github.com/shouanrenhechun/Graph/releases/tag/v0.1.0)所附的基础定理实例、部分等号结构和零强制反例。Python 脚本使用 Python 3.10 或更新版本及标准库，等号结构复核另需 Node.js。
 
 ```sh
 git clone --branch v0.1.0 https://github.com/shouanrenhechun/Graph.git
@@ -102,12 +81,12 @@ python repro/zero-forcing/counterexample_verify.py
 
 | 复核 | 范围与输出 |
 | --- | --- |
-| 二部支配、森林支配 | 两项分别检查了 28,263 张二至六点的无孤立标号图，另有随机实例与 15 个叶冠等号构造。结果以 JSON 输出。 |
+| 二部支配、森林支配 | 两项分别检查了 28,263 张二至六点的无孤立标号图，另有随机实例与 15 个叶冠等号构造。 [二部支配记录](repro/domination/general_cn_results.json) · [森林支配记录](repro/domination/acyclic_results.json) |
 | 一般转移与公式 | 穷举 $k=0,1,2,3$ 的 113,052 个图与参数组合，并对 3,200 组最大度与退化度参数做精确算术检查。输出 [JSON 记录](repro/domination/output/pdf/domination_chain_checks.json)。 |
-| 等号结构 | 用有限图检查加权选择的等号条件、增加外围边的严格性及最优参数公式，输出 JSON。 |
+| 等号结构 | 用有限图检查加权选择的等号条件、增加外围边的严格性及最优参数公式。 [计算记录](repro/domination/equality/domination_equality_checks.json) |
 | 零强制计数 | 重新生成 [396 点证书](repro/zero-forcing/counterexample_certificate.json)，检查精确整数不等式及三个根的计算结果。 |
 
-这些脚本核对有限实例、算式及反例证书。一般性上界、下界和等号推导见相应手稿。各脚本的说明见[结构支配复核目录](repro/domination/README.md)和[零强制复核目录](repro/zero-forcing/README.md)。
+这些脚本的覆盖范围见各自的[结构支配说明](repro/domination/README.md)与[零强制说明](repro/zero-forcing/README.md)。A、B、C 各稿中的一般性定理和有限计算分别以稿内说明为准。
 
 ## Lean 形式化范围
 
