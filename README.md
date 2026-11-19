@@ -16,21 +16,21 @@ The first release determines sharp worst-case ratios for induced forest and bipa
 
 设 $G$ 是非空、无孤立顶点的有限简单图。若每个 $D$ 外的顶点都在 $D$ 中有邻点，则 $D$ 是支配集。要求诱导子图 $G[D]$ 为森林或二部图，分别得到森林支配数 $\gamma_{\mathrm{acyclic}}(G)$ 和二部支配数 $\gamma_{\mathrm{bip}}(G)$。两者都是满足相应条件的支配集的最小大小。
 
-对固定的整数 $\Delta\ge 1$，在所有最大度至多 $\Delta$ 的上述图上取支配数与顶点数之比的上确界，得到对应的极值常数。两种约束共享同一常数。对 $\Delta\ge 4$，精确值为
+对固定的整数 $\Delta\ge 1$，在所有最大度至多 $\Delta$ 的上述图上取支配数与顶点数之比的上确界，得到对应的极值常数。两种约束共享同一常数。对 $\Delta\ge 4$，精确值如下，其中 $a$ 取整数。
 
-$$
+```math
 C_\Delta=
-\max_{a\in\{1,\ldots,\Delta-2\}}
+\max_{1\le a\le\Delta-2}
 \frac{2+a(\Delta-a-1)}{(\Delta-a+1)(a+1)}.
-$$
+```
 
 当 $\Delta=1,2,3$ 时，常数为 $1/2$。上式中的一个最优整数参数可以直接取为
 
-$$
+```math
 a_\Delta=\left\lceil
 \frac{\sqrt{8\Delta(\Delta-2)+1}-2\Delta+1}{2}
 \right\rceil.
-$$
+```
 
 这里 cor(Kₘ, a) 表示给完全图 $K_m$ 的每个顶点各接上 $a$ 个专属叶子。取 $m=\Delta-a+1$ 和任一个最优 $a$，叶冠图同时达到两种支配约束的极值。限制图连通，或要求最大度恰为 $\Delta$，常数仍相同。
 
@@ -49,13 +49,13 @@ $$
 
 若一张图的每个非空诱导子图都有一个度数至多 $k$ 的顶点，则称它为 $k$ 退化。要求支配集诱导 $k$ 退化图时，在同一最大度图类上的精确极值常数为
 
-$$
+```math
 C_{\Delta,k}=
-\max\left\{\frac12,\;
+\max\left(\frac{1}{2},\;
 \max_{1\le a\le\Delta-k-1}
 \frac{k+1+a(\Delta-a-k)}{(\Delta-a+1)(a+1)}
-\right\}.
-$$
+\right).
+```
 
 内层只取整数 $a$。范围为空时只保留 $1/2$。常数恰为 $1/2$ 当且仅当 $\Delta\le 2k+3$。同一常数也适用于包含所有 $k$ 退化图、且其成员都不含 $K_{k+2}$ 的图性质，例如 $(k+1)$ 可着色。取 $k=0$ 得到独立支配的情形，取 $k=1$ 得到森林、二部和无三角形三种支配约束的共同极值。
 
