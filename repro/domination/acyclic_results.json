@@ -1,0 +1,20 @@
+{
+  "all_isolate_free_graphs_order_2_to_6_checked": 28263,
+  "both_core_constructions_checked": true,
+  "random_general_graphs_checked": 1230,
+  "random_matching_core_graphs_checked": 491,
+  "sharp_corona_constructions_checked": 15,
+  "domination_induced_forest_and_bound_all_pass": true,
+  "examples": {
+    "old_bipartite_extension_can_have_a_cycle": true,
+    "old_cycle_example": "cor(C4,1)",
+    "modified_forest_construction_size_on_old_example": 4,
+    "pointwise_parameters_need_not_equal": {
+      "graph": "cor(C4,2)",
+      "order": 12,
+      "maximum_degree": 4,
+      "gamma_bip": 4,
+      "gamma_acyclic": 5
+    }
+  }
+}

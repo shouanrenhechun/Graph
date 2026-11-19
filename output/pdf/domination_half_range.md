@@ -1,5 +1,7 @@
 # 半数范围的完整等号刻画与定量稳定性
 
+> 发布说明：附录提到的部分历史材料仅保留文件名，随相应研究方向另行整理。
+
 日期：2026 年 10 月 10 日。
 
 本文补足此前尚未解决的 \(\Delta\le2k+3\) 范围。图均为有限简单非空图、无孤立顶点，\(\Delta(G)\le\Delta\)，整数 \(k\ge0,\Delta\ge1\)。记 \(\gamma_k(G)\) 为诱导 \(k\)-退化的支配集最小大小，\(\gamma(G)\) 为普通支配数。已知本范围的精确常数为 \(1/2\)。
@@ -598,8 +600,8 @@ K^{\rm crit}_{5,1}=7910478.
 - 指定完美匹配的六点以内图，共 123,108 个强制集合实例，
   检查引理 3.1 的独立及 1-退化版本，全部通过。
 
-[复核脚本](../../verify_domination_half_range.js)和
-[计算记录](domination_half_range_checks.json)单独保存。
+复核脚本（`verify_domination_half_range.js`）和
+计算记录（`domination_half_range_checks.json`）单独保存。
 
 进一步复核了稳定性新增步骤：
 
@@ -611,8 +613,8 @@ K^{\rm crit}_{5,1}=7910478.
   验证外部饱和匹配及“非孤立核心至少两个私有点”条件。
 - 精确枚举四个六点例外的最优独立支配集，数量为 2、4、3、2。
 
-[稳定性复核脚本](../../verify_domination_half_stability.js)与
-[稳定性复核结果](domination_half_stability_checks.json)单独保存。
+稳定性复核脚本（`verify_domination_half_stability.js`）与
+稳定性复核结果（`domination_half_stability_checks.json`）单独保存。
 
 计算辅助复核，不代替上述解析证明。本次更新 Markdown，未重新生成旧 PDF。
 

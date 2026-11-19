@@ -1,5 +1,7 @@
 结构支配的转移原理、退化层级与性质夹逼定理
 
+> 发布说明：附录提到的部分历史材料仅保留文件名，随相应研究方向另行整理。
+
 唯一分配、加权选择与独立补全的完整证明2026 年 10 月 9 日
 
 摘要　对有限简单无孤立顶点图，证明一种从加权诱导子图选择到结构支配集的转移原理。最大匹配给出可匹配到外部的支配核心；唯一分配外部顶点后，在核心上赋权 a−1。对添加孤立顶点封闭的图性质，核心内的加权选择可以扩充并通过极大独立集补全为支配集。随机排列提供任意 k≥0 的加权诱导 k-退化选择界，由此确定全部最大度参数的精确支配常数，并给出显式整数优化、半数阈值和固定 k 的渐近展开。完全图叶冠图提供相同下界，从而任何介于 k-退化图和禁 K(k+2) 图之间的性质共享该极值常数。全文包含所有必要引理；数值复核只作辅助。
@@ -997,7 +999,7 @@ C_{\Delta,k}n=\gamma_{\mathcal P}(G)
 同日后续证明已完成严格高于半数范围的定量稳定性：
 接近等号的图可以删除至多 \(K_\Delta[C_{\Delta,k}n-\gamma_k(G)]\) 个顶点，
 使剩余诱导图成为全部最优叶冠图的不交并；\(K_\Delta\) 有显式公式。
-完整证明见 [定量稳定性文稿](domination_stability.md)，并收入主稿附录 B。
+完整证明见 定量稳定性文稿（`domination_stability.md`），并收入主稿附录 B。
 上述半数范围的等号图和稳定性仍未解决。
 
 ## 7. 验证、来源与文件范围
@@ -1017,7 +1019,7 @@ C_{\Delta,k}n=\gamma_{\mathcal P}(G)
   森林支配数均从 8 降为 7。两批均用全体顶点子集精确枚举。
 - 表 A.4.1 的最优参数与常数用整数交叉相乘计算，并列参数没有被取整公式丢弃。
 
-详细计算记录见 [复核记录](C:/Users/18622/Documents/ChatGPT/图论研究/output/pdf/domination_equality_checks.json)；[复核程序](C:/Users/18622/Documents/ChatGPT/图论研究/verify_domination_equality.js) 单独保存。
+详细计算记录见 [复核记录](../../repro/domination/equality/domination_equality_checks.json)；[复核程序](../../repro/domination/equality/verify_domination_equality.js) 单独保存。
 当前环境的 shell 与 Node 进程启动失败，本次使用会话内 JavaScript 完成这些复核，
 并用文件补丁保存文稿与脚本；没有重新生成 PDF。
 
@@ -1036,7 +1038,7 @@ C_{\Delta,k}n=\gamma_{\mathcal P}(G)
 日期：2026 年 10 月 9 日。
 
 **2026 年 10 月 10 日优化更新。** 下文保留首版稳定性证明作为完整推导记录。
-其显式常数已由 [优化文稿](domination_stability_optimized.md) 改进：
+其显式常数已由 优化文稿（`domination_stability_optimized.md`） 改进：
 统一可取 \(32\Delta^6\)，而 \(k=1,\Delta=6\) 可取 \(43200/7<6172\)。
 优化证明收入主稿附录 C；首版关于“指数依赖能否降为多项式”的问题已解决，
 最佳常数及六次依赖能否继续降低仍未解决。
@@ -1384,8 +1386,8 @@ w(A)\ge\mu.
 
 复核脚本和实际运行结果分别为：
 
-- [verify_domination_stability.js](../../verify_domination_stability.js)
-- [domination_stability_checks.json](domination_stability_checks.json)
+- `verify_domination_stability.js`
+- `domination_stability_checks.json`
 
 实际复核全部通过：
 
@@ -1785,7 +1787,7 @@ w(A_0)=\beta,
 
 所有检查通过，复核不代替解析证明。
 
-[复核脚本](../../verify_domination_stability_optimized.js)与[精确结果](domination_stability_optimized_checks.json)单独保存。本次更新 Markdown，未重新生成旧 PDF。
+复核脚本（`verify_domination_stability_optimized.js`）与精确结果（`domination_stability_optimized_checks.json`）单独保存。本次更新 Markdown，未重新生成旧 PDF。
 
 相同优化立即适用于
 \(\mathcal D_k\subseteq\mathcal P\subseteq K_{k+2}\text{-free}\)：
@@ -2394,8 +2396,8 @@ K^{\rm crit}_{5,1}=7910478.
 - 指定完美匹配的六点以内图，共 123,108 个强制集合实例，
   检查引理 D.3.1 的独立及 1-退化版本，全部通过。
 
-[复核脚本](../../verify_domination_half_range.js)和
-[计算记录](domination_half_range_checks.json)单独保存。
+复核脚本（`verify_domination_half_range.js`）和
+计算记录（`domination_half_range_checks.json`）单独保存。
 
 进一步复核了稳定性新增步骤：
 
@@ -2407,8 +2409,8 @@ K^{\rm crit}_{5,1}=7910478.
   验证外部饱和匹配及“非孤立核心至少两个私有点”条件。
 - 精确枚举四个六点例外的最优独立支配集，数量为 2、4、3、2。
 
-[稳定性复核脚本](../../verify_domination_half_stability.js)与
-[稳定性复核结果](domination_half_stability_checks.json)单独保存。
+稳定性复核脚本（`verify_domination_half_stability.js`）与
+稳定性复核结果（`domination_half_stability_checks.json`）单独保存。
 
 计算辅助复核，不代替上述解析证明。本次更新 Markdown，未重新生成旧 PDF。
 
@@ -2426,12 +2428,12 @@ K^{\rm crit}_{5,1}=7910478.
 
 
 > **2026-10-10 更新：B 方向的半数目标现已给出完整证明。**
-> 等号与稳定性后续进展见 [专项证明稿](domination_min_degree_two_equality_stability.md)：已有纯团的严格损失和线性数量界，以及易核心子类的完整结论；全参数层的等号刻画与全图稳定性仍未完成。
+> 等号与稳定性后续进展见 专项证明稿（`domination_min_degree_two_equality_stability.md`）：已有纯团的严格损失和线性数量界，以及易核心子类的完整结论；全参数层的等号刻画与全图稳定性仍未完成。
 > 对 \(k\ge1,\ \delta(G)\ge2,\ \Delta(G)\le2k+4\)，有
 > \(\gamma_{\mathcal D_k}(G)\le\lfloor |V(G)|/2\rfloor\)，并由 \(C_4\) 得到
 > \(c_{\Delta,k}^{(\delta\ge2)}=1/2\)（\(2\le\Delta\le2k+4\)）。
 > 特别地 \(c_{6,1}^{(\delta\ge2)}=1/2\)。
-> 完整推导及核验说明见 [最小度 2 半数定理](domination_min_degree_two_half.md)。
+> 完整推导及核验说明见 最小度 2 半数定理（`domination_min_degree_two_half.md`）。
 > 以下先前评估中关于该目标“未证明”的状态和旧区间界，均由此更新替代；新范围的等号刻画与稳定性尚待另做。
 
 

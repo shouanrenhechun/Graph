@@ -1,0 +1,143 @@
+{
+  "date": "2026-10-09",
+  "scope": "Finite exact checks of the positive-weight selection equality lemma and exterior-edge strictness; formula checks do not replace analytic proofs.",
+  "lemma": {
+    "graphs": 28263,
+    "weightedCases": 85116,
+    "equalities": 79,
+    "failures": []
+  },
+  "exteriorEdges": [
+    {
+      "k": 0,
+      "m": 3,
+      "a": 2,
+      "n": 9,
+      "baseline": 5,
+      "addedLeafEdges": 15,
+      "minimumAfter": 4,
+      "maximumAfter": 4,
+      "allStrict": true
+    },
+    {
+      "k": 1,
+      "m": 5,
+      "a": 2,
+      "n": 15,
+      "baseline": 8,
+      "addedLeafEdges": 45,
+      "minimumAfter": 7,
+      "maximumAfter": 7,
+      "allStrict": true
+    }
+  ],
+  "formula": {
+    "cases": 9300,
+    "failures": []
+  },
+  "k1Table": [
+    {
+      "Delta": 6,
+      "constant": "8/15",
+      "a": [
+        2
+      ],
+      "core": [
+        5
+      ]
+    },
+    {
+      "Delta": 7,
+      "constant": "5/9",
+      "a": [
+        2
+      ],
+      "core": [
+        6
+      ]
+    },
+    {
+      "Delta": 8,
+      "constant": "7/12",
+      "a": [
+        3
+      ],
+      "core": [
+        6
+      ]
+    },
+    {
+      "Delta": 9,
+      "constant": "17/28",
+      "a": [
+        3
+      ],
+      "core": [
+        7
+      ]
+    },
+    {
+      "Delta": 10,
+      "constant": "22/35",
+      "a": [
+        4
+      ],
+      "core": [
+        7
+      ]
+    },
+    {
+      "Delta": 11,
+      "constant": "13/20",
+      "a": [
+        4
+      ],
+      "core": [
+        8
+      ]
+    },
+    {
+      "Delta": 12,
+      "constant": "2/3",
+      "a": [
+        4,
+        5
+      ],
+      "core": [
+        9,
+        8
+      ]
+    },
+    {
+      "Delta": 13,
+      "constant": "37/54",
+      "a": [
+        5
+      ],
+      "core": [
+        9
+      ]
+    },
+    {
+      "Delta": 14,
+      "constant": "7/10",
+      "a": [
+        5
+      ],
+      "core": [
+        10
+      ]
+    },
+    {
+      "Delta": 15,
+      "constant": "5/7",
+      "a": [
+        6
+      ],
+      "core": [
+        10
+      ]
+    }
+  ],
+  "allPass": true
+}

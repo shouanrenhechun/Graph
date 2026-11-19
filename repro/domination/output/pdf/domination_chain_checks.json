@@ -1,0 +1,8 @@
+{
+  "exhaustive_graphs_through_six_vertices": 28263,
+  "exhaustive_k_0_through_3_instances": 113052,
+  "random_graphs": 299,
+  "random_k_instances": 1196,
+  "exact_parameter_pairs": 3200,
+  "status": "all checks passed"
+}
