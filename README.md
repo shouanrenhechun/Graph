@@ -2,7 +2,7 @@
 
 本仓库收录图论手稿、显式反例和计算复核材料。[首个发布版本 `v0.1.0`](https://github.com/shouanrenhechun/Graph/releases/tag/v0.1.0) 聚焦两个问题。第一，在最大度受限的图中，要求支配集诱导森林或二部图，最坏情况下要选多大比例的顶点？第二，零强制二分配置的计数上界 `8^(n/2)` 是否对所有图成立？
 
-The first release determines sharp worst-case ratios for induced forest and bipartite domination under a maximum-degree bound, extends the result to induced degeneracy and related graph properties, and gives a 396-vertex tree counterexample to a zero-forcing configuration counting conjecture. It includes manuscripts, scripts, and machine-readable records. A companion Lean repository covers the case of maximum degree at most six.
+The first release determines sharp worst-case ratios for induced forest and bipartite domination under a maximum-degree bound, extends the result to induced degeneracy and related graph properties, and gives a 396-vertex tree counterexample to a zero-forcing configuration counting conjecture. It includes manuscripts, scripts, and machine-readable records. The three research manuscripts listed below expand the results on equality, stability, and restricted graph classes. A companion Lean repository covers the case of maximum degree at most six.
 
 ## 阅读入口
 
@@ -11,6 +11,16 @@ The first release determines sharp worst-case ratios for induced forest and bipa
 | 诱导森林支配与二部支配的精确常数 | [PDF](output/pdf/forest_bipartite_domination_theorem.pdf) · [Markdown](output/pdf/forest_bipartite_domination_theorem.md) | [二部支配记录](repro/domination/general_cn_results.json) · [森林支配记录](repro/domination/acyclic_results.json) |
 | 结构支配转移原理、退化层级与性质夹逼 | [PDF](output/pdf/domination_transfer_hierarchy.pdf) · [含附录的扩展手稿](output/pdf/domination_transfer_hierarchy.md) | [一般转移与公式记录](repro/domination/output/pdf/domination_chain_checks.json) · [等号条件复核记录](repro/domination/equality/domination_equality_checks.json) |
 | 零强制二分配置计数的 396 点树反例 | [PDF](output/pdf/zero-forcing-396-vertex-counterexample.pdf) · [直接计数证明](repro/zero-forcing/counterexample_proof.md) | [边表和整数证书](repro/zero-forcing/counterexample_certificate.json) · [核验说明](repro/zero-forcing/README.md) |
+
+## 方向 A、B、C 研究稿
+
+| 方向 | 研究稿 | 主要内容 |
+| --- | --- | --- |
+| A · 等号与稳定性 | [退化支配的精确常数、完整等号图与定量稳定性（PDF）](output/pdf/direction_A_equality_stability_proof.pdf) | 对无孤立顶点、最大度受限的有限简单图，给出全参数精确常数、最优整数参数、半数范围及严格高于半数范围的等号图分类，并以顶点删除距离刻画稳定性。 |
+| B · 最小度至少二 | [最小度二的半数定理、等号图、稳定性与五分之二部分结果（PDF）](output/pdf/direction_B_min_degree_two_proof.pdf) | 在 k ≥ 1、最小度至少 2、最大度至多 2k + 4 时，给出半数精确常数和等号图分类。等号图恰为若干四圈的不交并。文中还给出稳定性估计与五分之二的部分结果。 |
+| C · 宿主图的退化度、树宽与禁团条件 | [受退化度和最大度约束图的退化支配（PDF）](output/pdf/direction_C_research_paper.pdf) | 给出宿主退化度与最大度约束下的半数阈值、树宽子类的精确公式，以及最大度至多 7 的禁 K₆ 图的森林支配精确比例 11/20、等号图和线性稳定性。 |
+
+B 稿中的一般五分之二命题仍开放。C 稿给出最大度至多 8 时四退化图类和禁 K₆ 图类的共同下界 14/25 与共同上界 2281/4000。两个图类的精确比例是否都为 14/25 仍开放。最大度至多 8 且树宽至多 4 的子类已取得精确值 14/25。
 
 ## 1. 最大度下的森林支配与二部支配
 
@@ -107,8 +117,8 @@ python repro/zero-forcing/counterexample_verify.py
 
 ## 其他研究方向
 
-[研究索引](research/README.md)追踪最大度八、零强制、Vizing、控制理论，以及树自动机与谱理论等方向。最大度八与禁团方向的一般 $14/25$ 目标仍开放。
+[研究索引](research/README.md)汇集方向 A、B、C 的公开稿件，并追踪零强制、Vizing、控制理论，以及树自动机与谱理论等方向。
 
 ## 引用与版本
 
-引用某个结论时，请写明手稿标题、相关定理或章节及所用版本。引用计算代码或数据时，请注明 [`v0.1.0` 发布版本](https://github.com/shouanrenhechun/Graph/releases/tag/v0.1.0)与脚本或证书名称。机器可读引用信息见 [CITATION.cff](CITATION.cff)。
+引用某个结论时，请写明手稿标题、相关定理或章节及所用版本。方向 A、B、C 的研究稿可按 PDF 首页日期和 GitHub 文件的固定链接引用。引用首版的计算代码或数据时，请注明 [`v0.1.0` 发布版本](https://github.com/shouanrenhechun/Graph/releases/tag/v0.1.0)与脚本或证书名称。机器可读引用信息见 [CITATION.cff](CITATION.cff)。
